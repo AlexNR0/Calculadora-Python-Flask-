@@ -1,0 +1,141 @@
+:root {
+    --color-azul-claro: rgb(158, 202, 214);
+    --color-azul-medio: rgb(116, 141, 174);
+    --color-rosa-suave: rgb(245, 203, 203);
+    --color-rosa-claro: rgb(255, 234, 234);
+    --color-texto: #333;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-rosa-claro);
+    font-family: Arial, sans-serif;
+    color: var(--color-texto);
+}
+
+.calculadora {
+    padding: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    background-color: var(--color-azul-claro);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.calculadora:hover {
+    transform: scale(1.01);
+}
+
+.contenedor_inputs {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.btn_contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.numeros_contenedor {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.numeros {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.inp-cont {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 2px solid var(--color-azul-medio);
+    background-color: var(--color-rosa-claro);
+    transition: all 0.3s ease;
+}
+
+.inp-cont:focus {
+    border-color: var(--color-rosa-suave);
+    outline: none;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(116, 141, 174, 0.5);
+}
+
+.numeros button {
+    width: 80px;
+    height: 80px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: var(--color-rosa-suave);
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.numeros button:hover {
+    background-color: var(--color-rosa-claro);
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cero_contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.cero {
+    grid-column: 2 / 3;
+    width: 260px;
+    height: 80px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: var(--color-rosa-suave);
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.cero:hover {
+    background-color: var(--color-rosa-claro);
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+form input, form select, form button {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+h2 {
+    margin-top: 2rem;
+}

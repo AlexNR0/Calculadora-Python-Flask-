@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Calculadora</title>
+</head>
+
+<body>
+    
+    <form method="POST">
+        <div class="contenedor_inputs">
+            <input type="text" class="inp-cont" id="numa" name="a" placeholder="Ingrese un primer número" value="{{ resultado or '' }}" required>
+            <input type="text" class="inp-cont" id="numb" name="b" placeholder="Ingrese el segundo número" required>
+        </div>
+        <div class="btn_contenedor">
+            <select name="operador">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+            </select>
+            <button type="submit">Operar</button>
+        </div>
+    </form>
+
+    <div class="numeros_contenedor">
+        <div class="numeros">
+            <button class="numero" name="1">1</button>
+            <button class="numero" name="2">2</button>
+            <button class="numero" name="3">3</button>
+            <button class="numero" name="4">4</button>
+            <button class="numero" name="5">5</button>
+            <button class="numero" name="6">6</button>
+            <button class="numero" name="7">7</button>
+            <button class="numero" name="8">8</button>
+            <button class="numero" name="9">9</button>
+        </div>
+        <div class="cero_contenedor">
+            <button name="0" class="cero">0</button>
+        </div>
+    </div>
+
+    {% if result is not none %}
+        <h2>Resultado: {{ resultado }}</h2>
+    {% endif %}
+
+
+    <script>
+        const botones = document.querySelectorAll('.numeros button, .cero_contenedor button');
+        const inputA = document.getElementById('numa');
+        const inputB = document.getElementById('numb');
+        const sonidoEspecial = new Audio("{{ url_for('static', filename='sounds/teclas-especiales.mp3') }}");
+
+        let inputActivo = null;
+
+        inputA.addEventListener("focus", () => {
+            inputActivo = inputA;
+        });
+        inputB.addEventListener("focus", () => {
+            inputActivo = inputB;
+        });
+
+        botones.forEach(boton => {
+            boton.addEventListener('click', (event) => {
+                if (inputActivo) {
+                    inputActivo.value += boton.textContent;
+                }
+                sonidoEspecial.currentTime = 0;
+                sonidoEspecial.play();
+            });
+        });
+    </script>
+
+</body>
+</html>

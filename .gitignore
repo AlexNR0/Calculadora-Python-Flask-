@@ -1,0 +1,16 @@
+# Entornos virtuales
+venv/
+.env
+__pycache__/
+*.pyc
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de bases de datos o backups
+*.sqlite3
+*.db
+*.bak
+*.zip
+*.tar
